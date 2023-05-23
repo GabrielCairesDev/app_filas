@@ -8,6 +8,9 @@ class ControladorPaginaLoja extends ChangeNotifier {
   ValueNotifier<bool> loading = ValueNotifier<bool>(false);
   ValueNotifier<List<ProdutosModel>> produtos = ValueNotifier<List<ProdutosModel>>([]);
   ValueNotifier<List<ProdutosModel>> produtosFiltrados = ValueNotifier<List<ProdutosModel>>([]);
+  ValueNotifier<int> quantidadeTotalProdutos = ValueNotifier<int>(0);
+  ValueNotifier<int> quantidadeParaAdicionar = ValueNotifier<int>(1);
+  ValueNotifier<double> valorTotalProdutos = ValueNotifier<double>(0);
 
   void startLoading() {
     loading.value = true;
@@ -35,7 +38,6 @@ class ControladorPaginaLoja extends ChangeNotifier {
     stopLoading();
   }
 
-  ValueNotifier<int> quantidadeParaAdicionar = ValueNotifier<int>(1);
   void removerQuantidade(int valor) {
     if (quantidadeParaAdicionar.value > 1) {
       quantidadeParaAdicionar.value -= valor;
@@ -53,13 +55,11 @@ class ControladorPaginaLoja extends ChangeNotifier {
     notifyListeners();
   }
 
-  ValueNotifier<int> quantidadeTotalProdutos = ValueNotifier<int>(0);
   void atualizarQuantidadeTotalProdutos(int valor) {
     quantidadeTotalProdutos.value += valor;
     notifyListeners();
   }
 
-  ValueNotifier<double> valorTotalProdutos = ValueNotifier<double>(0);
   void adicionarValorTotalProdutos(double valor) {
     valorTotalProdutos.value += valor * quantidadeTotalProdutos.value;
     notifyListeners();
