@@ -40,11 +40,9 @@ class _PaginaAvaliarState extends State<PaginaAvaliar> {
                             style: TextStyle(fontSize: 20, color: Colors.blue, decoration: TextDecoration.underline, decorationColor: Colors.blue),
                             textAlign: TextAlign.center))),
                 const SizedBox(height: 80),
-                const Text('Fale sobre a sua experiência',
-                    style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black)),
+                const Text('Fale sobre a sua experiência', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black)),
                 const SizedBox(height: 10),
-                const Text('O quão simples foi a sua compra?',
-                    style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+                const Text('O quão simples foi a sua compra?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
                 Avaliacao(
                   avaliacao: controladorPaginaAvaliar.estrela_01,
                   avaliacaoMaxima: 5,
@@ -52,8 +50,7 @@ class _PaginaAvaliarState extends State<PaginaAvaliar> {
                     controladorPaginaAvaliar.atualizarAvaliacao01(novaAvaliacao);
                   },
                 ),
-                const Text('O que achou do estabelecimento?',
-                    style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+                const Text('O que achou do estabelecimento?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
                 Avaliacao(
                   avaliacao: controladorPaginaAvaliar.estrela_02,
                   avaliacaoMaxima: 5,
@@ -61,8 +58,7 @@ class _PaginaAvaliarState extends State<PaginaAvaliar> {
                     controladorPaginaAvaliar.atualizarAvaliacao02(novaAvaliacao);
                   },
                 ),
-                const Text('Voltaria comprar no aplicativo?',
-                    style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
+                const Text('Voltaria comprar no aplicativo?', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black)),
                 Avaliacao(
                   avaliacao: controladorPaginaAvaliar.estrela_03,
                   avaliacaoMaxima: 5,
@@ -78,11 +74,7 @@ class _PaginaAvaliarState extends State<PaginaAvaliar> {
             padding: const EdgeInsets.all(10.0),
             child: BotaoAzul(
               texto: 'Enviar feedback',
-              onPressed: () {
-                print('Estrela 01 = ${controladorPaginaAvaliar.estrela_01}');
-                print('Estrela 02 = ${controladorPaginaAvaliar.estrela_02}');
-                print('Estrela 03 = ${controladorPaginaAvaliar.estrela_03}');
-              },
+              onPressed: () {},
             ),
           ),
         );
