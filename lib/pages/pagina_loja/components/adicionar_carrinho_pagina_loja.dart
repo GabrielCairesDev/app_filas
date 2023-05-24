@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../model/produtos_model.dart';
+
 class AdicionarCarrinhoPaginaLoja extends StatefulWidget {
   const AdicionarCarrinhoPaginaLoja({
     Key? key,
@@ -14,6 +16,7 @@ class AdicionarCarrinhoPaginaLoja extends StatefulWidget {
     required this.produtoPreco,
     required this.atualizarQuantidadeTotalProdutos,
     required this.atualizarValorTotalProdutos,
+    required this.adicionaProdutoSelecionado,
   }) : super(key: key);
 
   final int quantidade;
@@ -23,6 +26,8 @@ class AdicionarCarrinhoPaginaLoja extends StatefulWidget {
   final void Function(int valor) removerQuantidade;
   final void Function(int valor) resetarQuantidade;
   final void Function(int valor) atualizarQuantidadeTotalProdutos;
+  final void Function(ProdutosModel produto) adicionaProdutoSelecionado;
+
   final void Function(double valor) atualizarValorTotalProdutos;
 
   @override
@@ -96,6 +101,13 @@ class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoj
                         widget.atualizarQuantidadeTotalProdutos(widget.quantidade);
                         widget.atualizarValorTotalProdutos(widget.produtoPreco);
                         widget.resetarQuantidade(1);
+                        widget.adicionaProdutoSelecionado(ProdutosModel(
+                          produtoNome: widget.produtoNome,
+                          produtoDescricao: widget.produtoDescricao,
+                          produtoPreco: widget.produtoPreco,
+                          produtoImagem: widget.produtoImagem,
+                        ));
+
                         Navigator.pop(context);
                         setState(() {});
                       },

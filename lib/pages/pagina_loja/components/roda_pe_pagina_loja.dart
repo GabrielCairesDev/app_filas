@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../../../routes/rotas.dart';
+
 class RodaPePaginaLoja extends StatelessWidget {
   final int quantidade;
   final double valorTotal;
@@ -35,7 +37,9 @@ class RodaPePaginaLoja extends StatelessWidget {
                 ),
                 const Expanded(child: SizedBox()),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(Rotas.paginaCarrinho);
+                  },
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.blue,
                       fixedSize: const Size(165, 60),

@@ -8,6 +8,7 @@ class ControladorPaginaLoja extends ChangeNotifier {
   ValueNotifier<bool> loading = ValueNotifier<bool>(false);
   ValueNotifier<List<ProdutosModel>> produtos = ValueNotifier<List<ProdutosModel>>([]);
   ValueNotifier<List<ProdutosModel>> produtosFiltrados = ValueNotifier<List<ProdutosModel>>([]);
+
   ValueNotifier<int> quantidadeTotalProdutos = ValueNotifier<int>(0);
   ValueNotifier<int> quantidadeParaAdicionar = ValueNotifier<int>(1);
   ValueNotifier<double> valorTotalProdutos = ValueNotifier<double>(0);

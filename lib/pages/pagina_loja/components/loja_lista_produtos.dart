@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fura_fila/pages/pagina_carrinho/controller/controlador_pagina_carrinho.dart';
 import 'package:fura_fila/pages/pagina_loja/controller/controlador_pagina_loja.dart';
 import 'package:fura_fila/pages/pagina_loja/components/adicionar_carrinho_pagina_loja.dart';
 import 'package:intl/intl.dart';
@@ -12,6 +13,7 @@ class ProdutoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controladorPaginaLoja = Provider.of<ControladorPaginaLoja>(context);
+    final controladorPaginaCarrinho = Provider.of<ControladorPaginaCarrinho>(context);
 
     return InkWell(
       onTap: () {
@@ -30,6 +32,7 @@ class ProdutoItem extends StatelessWidget {
               atualizarQuantidadeTotalProdutos: controladorPaginaLoja.atualizarQuantidadeTotalProdutos,
               resetarQuantidade: controladorPaginaLoja.resetarQuantidade,
               atualizarValorTotalProdutos: controladorPaginaLoja.adicionarValorTotalProdutos,
+              adicionaProdutoSelecionado: controladorPaginaCarrinho.adicionarProdutoSelecionado,
             ),
           ),
         );
