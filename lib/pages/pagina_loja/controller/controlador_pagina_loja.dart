@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fura_fila/model/loja_model.dart';
-import 'package:fura_fila/repositories/produtos_repositorio.dart';
 
 import '../../../model/produtos_model.dart';
 import '../../../repositories/loja_repositorio.dart';
+import '../../../repositories/produtos_repositorio.dart';
 
 class ControladorPaginaLoja extends ChangeNotifier {
   final ProdutoRepositorio repositorioProduto = ProdutoRepositorioImplementacao();
