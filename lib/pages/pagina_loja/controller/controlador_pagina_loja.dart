@@ -1,43 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:fura_fila/repositories/produtos/produtos_repositorio.dart';
+import 'package:fura_fila/model/loja_model.dart';
+import 'package:fura_fila/repositories/produtos_repositorio.dart';
 
 import '../../../model/produtos_model.dart';
+import '../../../repositories/loja_repositorio.dart';
 
 class ControladorPaginaLoja extends ChangeNotifier {
   final ProdutoRepositorio repositorioProduto = ProdutoRepositorioImplementacao();
-  ValueNotifier<bool> loading = ValueNotifier<bool>(false);
+  final LojaRepositorioImplementacao repositorioLoja = LojaRepositorioImplementacao();
+
+  ValueNotifier<bool> carregando = ValueNotifier<bool>(false);
   ValueNotifier<List<ProdutosModel>> produtos = ValueNotifier<List<ProdutosModel>>([]);
-  ValueNotifier<List<ProdutosModel>> produtosFiltrados = ValueNotifier<List<ProdutosModel>>([]);
+  ValueNotifier<List<LojaModel>> loja = ValueNotifier<List<LojaModel>>([]);
+
+  // ValueNotifier<List<ProdutosModel>> produtosFiltrados = ValueNotifier<List<ProdutosModel>>([]);
 
   ValueNotifier<int> quantidadeTotalProdutos = ValueNotifier<int>(0);
   ValueNotifier<int> quantidadeParaAdicionar = ValueNotifier<int>(1);
   ValueNotifier<double> valorTotalProdutos = ValueNotifier<double>(0);
 
-  void startLoading() {
-    loading.value = true;
+  void iniciarCarregamentoLoja() {
+    carregando.value = true;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       notifyListeners();
     });
   }
 
-  void stopLoading() {
-    loading.value = false;
+  void iniciarCarregamentoProduto() {
+    carregando.value = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      notifyListeners();
+    });
+  }
+
+  void pararCarregamento() {
+    carregando.value = false;
     notifyListeners();
   }
 
-  Future<void> getProdutos() async {
-    startLoading();
-    final resultado = await repositorioProduto.getProduto();
+  Future<void> pegarProdutos() async {
+    iniciarCarregamentoProduto();
+    final resultado = await repositorioProduto.pegarProduto();
     produtos.value = resultado;
-    stopLoading();
+    pararCarregamento();
   }
 
-  void filtrarProdutos(String valor) async {
-    startLoading();
-    final result = await repositorioProduto.getProdutoFiltrado(valor);
-    produtos.value = result;
-    stopLoading();
+  Future<void> pegarLoja() async {
+    iniciarCarregamentoLoja();
+    final resultado = await repositorioLoja.pegarLoja();
+    loja.value = resultado;
+    pararCarregamento();
   }
+
+  // void filtrarProdutos(String valor) async {
+  //   iniciarCarregamento();
+  //   final result = await repositorioProduto.getProdutoFiltrado(valor);
+  //   produtos.value = result;
+  //   pararCarregamento();
+  // }
 
   void removerQuantidade(int valor) {
     if (quantidadeParaAdicionar.value > 1) {

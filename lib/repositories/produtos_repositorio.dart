@@ -1,13 +1,13 @@
 import 'package:fura_fila/model/produtos_model.dart';
 
 abstract class ProdutoRepositorio {
-  Future<List<ProdutosModel>> getProduto();
+  Future<List<ProdutosModel>> pegarProduto();
   Future<List<ProdutosModel>> getProdutoFiltrado(String produtoNome);
 }
 
 class ProdutoRepositorioImplementacao implements ProdutoRepositorio {
   @override
-  Future<List<ProdutosModel>> getProduto() async {
+  Future<List<ProdutosModel>> pegarProduto() async {
     return [
       ProdutosModel(
         produtoNome: "Pão de Queijo",

@@ -21,3 +21,4 @@ class MyApp extends StatelessWidget {
   // static get paginaCadastrar => "/pagina_cadastrar";
   // static get paginaAvaliar => "/pagina_avaliar";
   // static get paginaLoja => "/pagina_loja";
+  // static get paginaLoja => "/pagina_carrinho";
