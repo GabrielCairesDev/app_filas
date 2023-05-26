@@ -19,23 +19,28 @@ class ProdutoItem extends StatelessWidget {
       onTap: () {
         showModalBottomSheet<void>(
           context: context,
-          builder: (BuildContext context) => ValueListenableBuilder(
-            valueListenable: controladorPaginaLoja.quantidadeParaAdicionar,
-            builder: (context, value, child) => AdicionarCarrinhoPaginaLoja(
-              produtoImagem: controladorPaginaLoja.produtos.value[index].produtoImagem,
-              produtoNome: controladorPaginaLoja.produtos.value[index].produtoNome,
-              produtoDescricao: controladorPaginaLoja.produtos.value[index].produtoDescricao,
-              produtoPreco: controladorPaginaLoja.produtos.value[index].produtoPreco,
-              quantidade: controladorPaginaLoja.quantidadeParaAdicionar.value,
-              adicionarQuantidade: controladorPaginaLoja.adicionarQuantidade,
-              removerQuantidade: controladorPaginaLoja.removerQuantidade,
-              atualizarQuantidadeTotalProdutos: controladorPaginaLoja.atualizarQuantidadeTotalProdutos,
-              resetarQuantidade: controladorPaginaLoja.resetarQuantidade,
-              atualizarValorTotalProdutos: controladorPaginaLoja.adicionarValorTotalProdutos,
-              adicionaProdutoSelecionado: controladorPaginaCarrinho.adicionarProdutoSelecionado,
-            ),
-          ),
-        );
+          builder: (BuildContext context) {
+            return ValueListenableBuilder(
+              valueListenable: controladorPaginaLoja.quantidadeParaAdicionar,
+              builder: (context, value, child) => AdicionarCarrinhoPaginaLoja(
+                produtoImagem: controladorPaginaLoja.produtos.value[index].produtoImagem,
+                produtoNome: controladorPaginaLoja.produtos.value[index].produtoNome,
+                produtoDescricao: controladorPaginaLoja.produtos.value[index].produtoDescricao,
+                produtoPreco: controladorPaginaLoja.produtos.value[index].produtoPreco,
+                produtoQuantidade: controladorPaginaLoja.produtos.value[index].produtoQuantidade,
+                quantidade: controladorPaginaLoja.quantidadeParaAdicionar.value,
+                adicionarQuantidade: controladorPaginaLoja.adicionarQuantidade,
+                removerQuantidade: controladorPaginaLoja.removerQuantidade,
+                atualizarQuantidadeTotalProdutos: controladorPaginaLoja.atualizarQuantidadeTotalProdutos,
+                resetarQuantidade: controladorPaginaLoja.resetarQuantidade,
+                atualizarValorTotalProdutos: controladorPaginaLoja.adicionarValorTotalProdutos,
+                adicionaProdutoSelecionado: controladorPaginaCarrinho.adicionarProdutoSelecionado,
+              ),
+            );
+          },
+        ).then((value) {
+          controladorPaginaLoja.resetarQuantidade(1);
+        });
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -70,6 +75,7 @@ class ProdutoItem extends StatelessWidget {
                       .format(double.parse(controladorPaginaLoja.produtos.value[index].produtoPreco.toString())),
                   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
+                Text(controladorPaginaLoja.produtos.value[index].produtoQuantidade.toString())
               ],
             ),
           ),

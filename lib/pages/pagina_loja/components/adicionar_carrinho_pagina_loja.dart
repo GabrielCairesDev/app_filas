@@ -17,9 +17,10 @@ class AdicionarCarrinhoPaginaLoja extends StatefulWidget {
     required this.atualizarQuantidadeTotalProdutos,
     required this.atualizarValorTotalProdutos,
     required this.adicionaProdutoSelecionado,
+    required this.produtoQuantidade,
   }) : super(key: key);
 
-  final int quantidade;
+  final int quantidade, produtoQuantidade;
   final String produtoImagem, produtoNome, produtoDescricao;
   final double produtoPreco;
   final void Function(int valor) adicionarQuantidade;
@@ -27,7 +28,6 @@ class AdicionarCarrinhoPaginaLoja extends StatefulWidget {
   final void Function(int valor) resetarQuantidade;
   final void Function(int valor) atualizarQuantidadeTotalProdutos;
   final void Function(ProdutosModel produto) adicionaProdutoSelecionado;
-
   final void Function(double valor) atualizarValorTotalProdutos;
 
   @override
@@ -37,6 +37,8 @@ class AdicionarCarrinhoPaginaLoja extends StatefulWidget {
 class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoja> {
   @override
   Widget build(BuildContext context) {
+    int soma = int.parse(widget.produtoQuantidade.toString()) + widget.quantidade;
+
     return Container(
       height: 800,
       color: Colors.white,
@@ -80,14 +82,12 @@ class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoj
                               IconButton(
                                   onPressed: () {
                                     widget.removerQuantidade(1);
-                                    setState(() {});
                                   },
                                   icon: const Icon(Icons.remove, color: Colors.black)),
-                              Text(widget.quantidade.toString(), style: const TextStyle(color: Colors.black)),
+                              Text(soma.toString(), style: const TextStyle(color: Colors.black)),
                               IconButton(
                                   onPressed: () {
                                     widget.adicionarQuantidade(1);
-                                    setState(() {});
                                   },
                                   icon: const Icon(Icons.add, color: Colors.black)),
                             ],
@@ -100,16 +100,17 @@ class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoj
                       onPressed: () {
                         widget.atualizarQuantidadeTotalProdutos(widget.quantidade);
                         widget.atualizarValorTotalProdutos(widget.produtoPreco);
-                        widget.resetarQuantidade(1);
-                        widget.adicionaProdutoSelecionado(ProdutosModel(
-                          produtoNome: widget.produtoNome,
-                          produtoDescricao: widget.produtoDescricao,
-                          produtoPreco: widget.produtoPreco,
-                          produtoImagem: widget.produtoImagem,
-                        ));
 
+                        widget.adicionaProdutoSelecionado(
+                          ProdutosModel(
+                            produtoNome: widget.produtoNome,
+                            produtoDescricao: widget.produtoDescricao,
+                            produtoPreco: widget.produtoPreco,
+                            produtoImagem: widget.produtoImagem,
+                            produtoQuantidade: widget.quantidade,
+                          ),
+                        );
                         Navigator.pop(context);
-                        setState(() {});
                       },
                       style: TextButton.styleFrom(
                           backgroundColor: Colors.blue,
@@ -123,7 +124,7 @@ class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoj
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             )
           ],

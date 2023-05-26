@@ -17,6 +17,7 @@ class _PaginaCarrinhoState extends State<PaginaCarrinho> {
       builder: (_, controladorPaginaCarrinho, __) {
         final produtosSelecionados = controladorPaginaCarrinho.produtosSelecionados.value;
         return Scaffold(
+          appBar: AppBar(),
           body: ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -55,6 +56,7 @@ class _PaginaCarrinhoState extends State<PaginaCarrinho> {
                           NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$').format(double.parse(produto.produtoPreco.toString())),
                           style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                         ),
+                        Text(produto.produtoQuantidade.toString()),
                       ],
                     ),
                   ),
