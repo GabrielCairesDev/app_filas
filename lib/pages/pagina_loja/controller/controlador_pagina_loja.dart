@@ -45,7 +45,7 @@ class ControladorPaginaLoja extends ChangeNotifier {
     pararCarregamento();
   }
 
-  Future<void> pegarLoja() async {
+  Future<void> pegarLojas() async {
     iniciarCarregamentoLoja();
     final resultado = await repositorioLoja.pegarLoja();
     loja.value = resultado;

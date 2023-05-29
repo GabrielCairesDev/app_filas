@@ -8,9 +8,12 @@ class BannerPaginaLoja extends StatelessWidget {
     return SizedBox(
       height: 220,
       width: double.infinity,
-      child: Image.network(
-        'https://padariadesucesso.com/wp-content/uploads/2018/05/fachada-padaria.jpg',
-        fit: BoxFit.fill,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8.0), // Define o valor do raio de borda desejado
+        child: Image.network(
+          'https://padariadesucesso.com/wp-content/uploads/2018/05/fachada-padaria.jpg',
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

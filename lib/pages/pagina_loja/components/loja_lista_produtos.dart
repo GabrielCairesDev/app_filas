@@ -5,10 +5,10 @@ import 'package:fura_fila/pages/pagina_loja/components/adicionar_carrinho_pagina
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class ProdutoItem extends StatelessWidget {
+class ListaProdutos extends StatelessWidget {
   final int index;
 
-  const ProdutoItem({super.key, required this.index});
+  const ListaProdutos({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -67,15 +67,15 @@ class ProdutoItem extends StatelessWidget {
             width: MediaQuery.of(context).size.width * 0.67,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(controladorPaginaLoja.produtos.value[index].produtoNome),
+                Text(controladorPaginaLoja.produtos.value[index].produtoNome, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold)),
                 Text(controladorPaginaLoja.produtos.value[index].produtoDescricao),
                 Text(
                   NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$')
                       .format(double.parse(controladorPaginaLoja.produtos.value[index].produtoPreco.toString())),
                   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
-                Text(controladorPaginaLoja.produtos.value[index].produtoQuantidade.toString())
               ],
             ),
           ),

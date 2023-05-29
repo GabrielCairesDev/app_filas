@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../routes/rotas.dart';
 import '../widgets/botao_azul.dart';
 import '../../../widgets/campode_de_texto.dart';
-import '../controller/controlador_pagina_inicial.dart';
+import '../components/controlador_pagina_inicial.dart';
 
 class PaginaInicial extends StatefulWidget {
   const PaginaInicial({Key? key}) : super(key: key);

@@ -7,7 +7,9 @@ class ThemeApp {
     useMaterial3: true,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(
+        color: Colors.black,
+      ),
     ),
   );
 }

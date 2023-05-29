@@ -37,8 +37,6 @@ class AdicionarCarrinhoPaginaLoja extends StatefulWidget {
 class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoja> {
   @override
   Widget build(BuildContext context) {
-    int soma = int.parse(widget.produtoQuantidade.toString()) + widget.quantidade;
-
     return Container(
       height: 800,
       color: Colors.white,
@@ -51,28 +49,32 @@ class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoj
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    height: 200,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(image: NetworkImage(widget.produtoImagem), fit: BoxFit.cover))),
+                  height: 200,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10), image: DecorationImage(image: NetworkImage(widget.produtoImagem), fit: BoxFit.cover)),
+                ),
                 Text(widget.produtoNome, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
                 Text(widget.produtoDescricao),
                 const SizedBox(height: 10),
-                Text(
-                  NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$').format(double.parse(widget.produtoPreco.toString())),
-                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                ),
+                Text(NumberFormat.currency(locale: 'pt_BR', symbol: 'R\$').format(double.parse(widget.produtoPreco.toString())),
+                    style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 40),
                 Row(
                   children: [
                     Stack(
                       children: [
                         Container(
-                            height: 50,
-                            width: 150,
-                            decoration: const BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.all(Radius.circular(10)))),
+                          height: 50,
+                          width: 150,
+                          decoration: const BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
+                        ),
                         SizedBox(
                           height: 50,
                           width: 150,
@@ -84,7 +86,7 @@ class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoj
                                     widget.removerQuantidade(1);
                                   },
                                   icon: const Icon(Icons.remove, color: Colors.black)),
-                              Text(soma.toString(), style: const TextStyle(color: Colors.black)),
+                              Text(widget.quantidade.toString(), style: const TextStyle(color: Colors.black)),
                               IconButton(
                                   onPressed: () {
                                     widget.adicionarQuantidade(1);
@@ -100,7 +102,6 @@ class _AdicionarCarrinhoPaginaLojaState extends State<AdicionarCarrinhoPaginaLoj
                       onPressed: () {
                         widget.atualizarQuantidadeTotalProdutos(widget.quantidade);
                         widget.atualizarValorTotalProdutos(widget.produtoPreco);
-
                         widget.adicionaProdutoSelecionado(
                           ProdutosModel(
                             produtoNome: widget.produtoNome,

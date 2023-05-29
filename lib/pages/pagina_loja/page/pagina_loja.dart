@@ -20,19 +20,20 @@ class _PaginaLojaState extends State<PaginaLoja> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     Provider.of<ControladorPaginaLoja>(context).pegarProdutos();
-    Provider.of<ControladorPaginaLoja>(context).pegarLoja();
+    Provider.of<ControladorPaginaLoja>(context).pegarLojas();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ControladorPaginaLoja>(
-      builder: (context, controladorPaginaLoja, oldWidget) {
-        if (controladorPaginaLoja.loja.value.isNotEmpty || controladorPaginaLoja.produtos.value.isNotEmpty) {
-          return Scaffold(
-            appBar: AppBar(),
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+    return Consumer<ControladorPaginaLoja>(builder: (context, controladorPaginaLoja, oldWidget) {
+      if (controladorPaginaLoja.loja.value.isNotEmpty ||
+          controladorPaginaLoja.produtos.value.isNotEmpty ||
+          controladorPaginaLoja.carregando.value == false) {
+        return Scaffold(
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 50.0, 8.0, 0.0),
+              child: SizedBox(
                 child: Column(
                   children: [
                     const BannerPaginaLoja(),
@@ -40,32 +41,32 @@ class _PaginaLojaState extends State<PaginaLoja> {
                     PerfilPaginaLoja(loja: controladorPaginaLoja.loja.value[0]),
                     const SizedBox(height: 15),
                     const PesquisarPaginaLoja(),
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 10),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: controladorPaginaLoja.produtos.value.length,
                       itemBuilder: (BuildContext context, int index) {
-                        return ProdutoItem(index: index);
+                        return ListaProdutos(index: index);
                       },
                     ),
                   ],
                 ),
               ),
             ),
-            bottomNavigationBar: RodaPePaginaLoja(
-              quantidade: controladorPaginaLoja.quantidadeTotalProdutos.value,
-              valorTotal: controladorPaginaLoja.valorTotalProdutos.value,
-            ),
-          );
-        } else {
-          return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      },
-    );
+          ),
+          bottomNavigationBar: RodaPePaginaLoja(
+            quantidade: controladorPaginaLoja.quantidadeTotalProdutos.value,
+            valorTotal: controladorPaginaLoja.valorTotalProdutos.value,
+          ),
+        );
+      } else {
+        return const Scaffold(
+          body: Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      }
+    });
   }
 }
