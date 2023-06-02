@@ -1,6 +1,6 @@
 import '../model/produtos_model.dart';
 
-class LojaRepository {
+class LojaDados {
   static List<ProdutosModel> produtos = [
     ProdutosModel(
       produtoNome: "Pão de Queijo",

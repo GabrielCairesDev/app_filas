@@ -7,7 +7,7 @@ import '../components/perfil_loja.dart';
 import '../components/roda_pe.dart/roda_pe.dart';
 
 class PaginaLoja extends StatelessWidget {
-  const PaginaLoja({super.key});
+  const PaginaLoja({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

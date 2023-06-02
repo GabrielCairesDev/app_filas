@@ -9,14 +9,9 @@ import '../components/campo_confirmar_senha_cadastrar.dart';
 import '../components/titulo_cadastrar.dart';
 import '../controller/controlador_pagina_cadastrar.dart';
 
-class PaginaCadastrar extends StatefulWidget {
+class PaginaCadastrar extends StatelessWidget {
   const PaginaCadastrar({super.key});
 
-  @override
-  State<PaginaCadastrar> createState() => _PaginaCadastrarState();
-}
-
-class _PaginaCadastrarState extends State<PaginaCadastrar> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ControladorPaginaCadastrar>(
