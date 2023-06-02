@@ -45,7 +45,13 @@ class PaginaLojaListaProdutos extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) {
                           // ABRIR O showModalBottomSheet 'METADE DA PÁGINA'
-                          return ListaProdutosMeiaPagina(context);
+                          return ListaProdutosMeiaPagina(
+                            context,
+                            produtoNome: produtoNome,
+                            produtoDescricao: produtoDescricao,
+                            produtoValor: produtoValor,
+                            produtoImagem: produtoImagem,
+                          );
                         },
                       );
                     },

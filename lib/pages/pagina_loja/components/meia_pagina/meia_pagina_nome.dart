@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
 class MeiaPaginaNome extends StatelessWidget {
-  const MeiaPaginaNome({super.key});
+  final String produtoNome;
+  const MeiaPaginaNome({super.key, required this.produtoNome});
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 30,
       width: double.infinity,
       child: Text(
-        'Pão de queijo',
-        style: TextStyle(
+        produtoNome,
+        style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),

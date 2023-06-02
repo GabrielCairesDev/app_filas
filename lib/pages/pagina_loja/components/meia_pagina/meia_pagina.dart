@@ -8,29 +8,34 @@ import 'meia_pagina_botao_add.dart';
 import 'meia_pagina_valor.dart';
 
 class ListaProdutosMeiaPagina extends StatelessWidget {
-  const ListaProdutosMeiaPagina(BuildContext context, {super.key});
+  final String produtoNome, produtoDescricao, produtoImagem;
+  final double produtoValor;
+  const ListaProdutosMeiaPagina(BuildContext context,
+      {super.key, required this.produtoNome, required this.produtoDescricao, required this.produtoValor, required this.produtoImagem});
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 800,
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Stack(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // IMAGEM DO PRODUTO //
-                MeiaPaginaImagem(),
+                MeiaPaginaImagem(
+                  produtoImagem: produtoImagem,
+                ),
                 // NOME DO PRODUTO //
-                MeiaPaginaNome(),
+                MeiaPaginaNome(produtoNome: produtoNome),
                 // DESCRIÇÃO DO PRODUTO //
-                MeiaPaginaDescricao(),
+                MeiaPaginaDescricao(produtoDescricao: produtoDescricao),
                 // VALOR DO PRODUTO //
-                MeiaPaginaValor(),
-                Row(
+                MeiaPaginaValor(produtoValor: produtoValor),
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // BOTÃO ADICIONAR E REMOVER QUANTIDADE //
