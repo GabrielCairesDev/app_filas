@@ -1,13 +1,8 @@
-class ProdutosModel {
-  final String produtoNome, produtoDescricao, produtoImagem;
-  final double produtoPreco;
-  int produtoQuantidadeCarrinho;
+class ProdutoModel {
+  final String nome;
+  final String descricao;
+  final double valor;
+  final String imagem;
 
-  ProdutosModel({
-    required this.produtoNome,
-    required this.produtoDescricao,
-    required this.produtoPreco,
-    required this.produtoImagem,
-    required this.produtoQuantidadeCarrinho,
-  });
+  ProdutoModel({required this.nome, required this.descricao, required this.valor, required this.imagem});
 }

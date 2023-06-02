@@ -1,30 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:fura_fila/model/produtos_model.dart';
 import 'package:fura_fila/pages/pagina_loja/components/lista_produtos/lista_produto_descricao.dart';
 import 'package:fura_fila/pages/pagina_loja/components/lista_produtos/lista_produtos_nome.dart';
 import 'package:fura_fila/pages/pagina_loja/components/lista_produtos/lista_produtos_valor.dart';
-import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 import '../../../../api/api_service.dart';
 import '../meia_pagina/meia_pagina.dart';
 import 'lista_produtos_imagem.dart';
 
-class PaginaLojaListaProdutos extends StatefulWidget {
+class PaginaLojaListaProdutos extends StatelessWidget {
   const PaginaLojaListaProdutos({Key? key}) : super(key: key);
 
   @override
-  State<PaginaLojaListaProdutos> createState() => _PaginaLojaListaProdutosState();
-}
-
-class _PaginaLojaListaProdutosState extends State<PaginaLojaListaProdutos> {
-  @override
-  void initState() {
-    super.initState();
-    Api().receberProdutos();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ParseObject>>(
+    return FutureBuilder<List<ProdutoModel>>(
       future: Api().receberProdutos(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -39,9 +28,12 @@ class _PaginaLojaListaProdutosState extends State<PaginaLojaListaProdutos> {
             itemCount: produtos.length,
             itemBuilder: (context, index) {
               final produto = produtos[index];
-              final produtoNome = produto.get<String>('nome');
-              final produtoDescricao = produto.get<String>('descricao');
-              final produtoValor = produto.get<double>('valor');
+              final produtoNome = produto.nome;
+              final produtoDescricao = produto.descricao;
+              final produtoValor = produto.valor;
+              final produtoImagem = produto.imagem;
+
+              // final produtoImagem = produto.get<String>('imagem');
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
@@ -62,7 +54,7 @@ class _PaginaLojaListaProdutosState extends State<PaginaLojaListaProdutos> {
                         Row(
                           children: [
                             // IMAGEM DO PRODUTO //
-                            const ListaProdutosImagem(),
+                            ListaProdutosImagem(imagem: produtoImagem),
                             const SizedBox(width: 10),
                             SizedBox(
                               width: MediaQuery.of(context).size.width * 0.67,
@@ -75,7 +67,7 @@ class _PaginaLojaListaProdutosState extends State<PaginaLojaListaProdutos> {
                                   // DESCRICAO DO PRODUTO //
                                   ListaProdutoDescricao(descricao: produtoDescricao.toString()),
                                   // VALOR DO PRODUTO R$ //
-                                  ListaProdutosValor(valor: produtoValor!),
+                                  ListaProdutosValor(valor: produtoValor),
                                 ],
                               ),
                             ),

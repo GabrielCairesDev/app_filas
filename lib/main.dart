@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'api/api_service.dart';
 import 'myapp.dart';
 
-void main() {
+Future<void> main() async {
   // LICENÇA PARA USAR A FONTE DO GOOGLE //
   LicenseRegistry.addLicense(
     () async* {
@@ -15,7 +15,7 @@ void main() {
     },
   );
   // PARA CARREGAR A API //
-  Api().carregarApi();
+  await Api().carregarApi();
   // INICIAR O APLICATIVO //
   runApp(
     MultiProvider(
