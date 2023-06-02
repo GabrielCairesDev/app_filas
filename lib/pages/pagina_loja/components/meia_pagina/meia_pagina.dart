@@ -26,9 +26,7 @@ class ListaProdutosMeiaPagina extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 // IMAGEM DO PRODUTO //
-                MeiaPaginaImagem(
-                  produtoImagem: produtoImagem,
-                ),
+                MeiaPaginaImagem(produtoImagem: produtoImagem),
                 // NOME DO PRODUTO //
                 MeiaPaginaNome(produtoNome: produtoNome),
                 // DESCRIÇÃO DO PRODUTO //

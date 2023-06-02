@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ListaProdutosImagem extends StatelessWidget {
   final String imagem;
@@ -11,10 +12,12 @@ class ListaProdutosImagem extends StatelessWidget {
       width: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-          image: NetworkImage(imagem),
-          fit: BoxFit.cover,
-        ),
+      ),
+      child: CachedNetworkImage(
+        imageUrl: imagem,
+        fit: BoxFit.cover,
+        placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+        errorWidget: (context, url, error) => const Icon(Icons.error),
       ),
     );
   }

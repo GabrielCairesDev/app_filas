@@ -32,8 +32,6 @@ class PaginaLojaListaProdutos extends StatelessWidget {
               final produtoDescricao = produto.descricao;
               final produtoValor = produto.valor;
               final produtoImagem = produto.imagem;
-
-              // final produtoImagem = produto.get<String>('imagem');
               return Padding(
                 padding: const EdgeInsets.only(bottom: 10),
                 child: Container(
