@@ -1,28 +1,27 @@
 import 'package:flutter/material.dart';
-import '../../../model/loja_model.dart';
 
-class PerfilPaginaLoja extends StatelessWidget {
-  final LojaModel loja;
-
-  const PerfilPaginaLoja({Key? key, required this.loja}) : super(key: key);
+class PaginaLojaPerfil extends StatelessWidget {
+  const PaginaLojaPerfil({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CircleAvatar(
-          radius: 35,
-          backgroundImage: NetworkImage(loja.lojaImagemPerfil),
-        ),
-        const SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(loja.lojaNome, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
-            Text(loja.lojaTipo),
-          ],
-        ),
-      ],
+    return const Padding(
+      padding: EdgeInsets.only(bottom: 20, top: 20),
+      child: Row(
+        children: [
+          Align(
+              alignment: Alignment.centerLeft,
+              child: CircleAvatar(backgroundImage: NetworkImage('https://w7.pngwing.com/pngs/450/256/png-transparent-bakery-logo.png'), radius: 35)),
+          SizedBox(width: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Trigo e Companhia', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text('Padaria', style: TextStyle(fontSize: 15)),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

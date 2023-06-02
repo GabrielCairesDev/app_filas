@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ControladorPaginaCadastrar extends ChangeNotifier {
-  final nomeControlador = TextEditingController();
-  final emailControlador = TextEditingController();
-  final senhaControlador = TextEditingController();
-  final confirmarSenhaControlador = TextEditingController();
+  final controladorNome = TextEditingController();
+  final controladorEmail = TextEditingController();
+  final controladorSenha = TextEditingController();
+  final controladorConfirmarSenha = TextEditingController();
+  GlobalKey<FormState> globalKeyNome = GlobalKey();
+  GlobalKey<FormState> globalKeyEmail = GlobalKey();
+  GlobalKey<FormState> globalKeySenha = GlobalKey();
+  GlobalKey<FormState> globalKeyConfirmarSenha = GlobalKey();
 
   String? validadorNome(String? nome) {
     if (nome!.isEmpty) {
@@ -35,9 +39,9 @@ class ControladorPaginaCadastrar extends ChangeNotifier {
   }
 
   apagarControladores() {
-    nomeControlador.clear();
-    emailControlador.clear();
-    senhaControlador.clear();
-    confirmarSenhaControlador.clear();
+    controladorNome.clear();
+    controladorEmail.clear();
+    controladorSenha.clear();
+    controladorConfirmarSenha.clear();
   }
 }

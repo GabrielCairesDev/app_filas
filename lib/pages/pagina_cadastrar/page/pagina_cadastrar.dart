@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fura_fila/pages/pagina_cadastrar/components/campo_email_cadastrar.dart';
+import 'package:fura_fila/pages/pagina_cadastrar/components/campo_nome_cadastrar.dart';
+import 'package:fura_fila/pages/pagina_cadastrar/components/campo_senha_cadastrar.dart';
+import 'package:fura_fila/pages/pagina_cadastrar/components/link_login.dart';
 import 'package:provider/provider.dart';
-import '../../../routes/rotas.dart';
-import '../../pagina_inicial/widgets/botao_azul.dart';
-import '../../../widgets/campode_de_texto.dart';
+import '../components/botao_concluir_cadastro.dart';
+import '../components/campo_confirmar_senha_cadastrar.dart';
+import '../components/titulo_cadastrar.dart';
 import '../controller/controlador_pagina_cadastrar.dart';
 
 class PaginaCadastrar extends StatefulWidget {
@@ -13,11 +17,6 @@ class PaginaCadastrar extends StatefulWidget {
 }
 
 class _PaginaCadastrarState extends State<PaginaCadastrar> {
-  GlobalKey<FormState> globalKeyNome = GlobalKey();
-  GlobalKey<FormState> globalKeyEmail = GlobalKey();
-  GlobalKey<FormState> globalKeySenha = GlobalKey();
-  GlobalKey<FormState> globalKeyConfirmarSenha = GlobalKey();
-
   @override
   Widget build(BuildContext context) {
     return Consumer<ControladorPaginaCadastrar>(
@@ -27,71 +26,26 @@ class _PaginaCadastrarState extends State<PaginaCadastrar> {
             controladorPaginaCadastrar.apagarControladores();
             return true;
           },
-          child: Scaffold(
+          child: const Scaffold(
             body: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Center(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 100),
-                      const Text('Seu tempo\nVale muito!', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 20),
-                      Form(
-                          key: globalKeyNome,
-                          // autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: CampoDeTexto(
-                              texto: 'Nome',
-                              textFieldControlador: controladorPaginaCadastrar.nomeControlador,
-                              textFieldValidador: controladorPaginaCadastrar.validadorNome)),
-                      const SizedBox(height: 10),
-                      Form(
-                          key: globalKeyEmail,
-                          // autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: CampoDeTexto(
-                              texto: 'E-mail',
-                              textFieldControlador: controladorPaginaCadastrar.emailControlador,
-                              textFieldValidador: controladorPaginaCadastrar.validadorEmail)),
-                      const SizedBox(height: 10),
-                      Form(
-                          key: globalKeySenha,
-                          // autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: CampoDeTexto(
-                              texto: 'Senha',
-                              textFieldControlador: controladorPaginaCadastrar.senhaControlador,
-                              textFieldValidador: controladorPaginaCadastrar.validadorSenha)),
-                      const SizedBox(height: 10),
-                      Form(
-                          key: globalKeyConfirmarSenha,
-                          // autovalidateMode: AutovalidateMode.onUserInteraction,
-                          child: CampoDeTexto(
-                              texto: 'Confirmar Senha',
-                              textFieldControlador: controladorPaginaCadastrar.confirmarSenhaControlador,
-                              textFieldValidador: controladorPaginaCadastrar.validadorConfirmarSenha)),
-                      const SizedBox(height: 10),
-                      BotaoAzul(
-                        texto: 'Concluir cadastro',
-                        onPressed: () {
-                          if (globalKeyNome.currentState!.validate() &&
-                              globalKeyEmail.currentState!.validate() &&
-                              globalKeySenha.currentState!.validate() &&
-                              globalKeyConfirmarSenha.currentState!.validate()) {
-                            print('Liberado para fazer cadastro');
-                            controladorPaginaCadastrar.apagarControladores();
-                          }
-                        },
-                      ),
-                      const SizedBox(height: 50),
-                      InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop(Rotas.paginaInicial);
-                        },
-                        child: const Text('Já tem uma conta?\nFaça login aqui',
-                            style: TextStyle(color: Colors.grey, decoration: TextDecoration.underline, decorationColor: Colors.grey),
-                            textAlign: TextAlign.center),
-                      ),
-                    ],
-                  ),
+                padding: EdgeInsets.fromLTRB(8, 128, 8, 8),
+                child: Column(
+                  children: [
+                    PaginaCadastrarTitulo(),
+                    // CAMPO PARA DIGITAR NOME
+                    PaginaCadastrarCampoNome(),
+                    // CAMPO PARA DIGITAR O E-MAIL //
+                    PaginaCadastrarCampoEmail(),
+                    // CAMPO PARA DIGITAR A SENHA //
+                    PaginaCadastrarCampoSenha(),
+                    // CAMPO PARA CONFIRMAR A SENHA //
+                    PaginaCadastrarCampoConfirmarSenha(),
+                    // BOTÃO PARA CONCLUIR O CADASTRO //
+                    PaginaCadastrarBotaoConcluir(),
+                    // CAMPO PARA IR PARA O LOGIN //
+                    PaginaCadastrarLinkLogin(),
+                  ],
                 ),
               ),
             ),

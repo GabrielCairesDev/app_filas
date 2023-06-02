@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../routes/rotas.dart';
 import '../components/avaliacao.dart';
-import '../../pagina_inicial/widgets/botao_azul.dart';
+import '../../pagina_inicial/components/botao_azul.dart';
 import '../controller/controlador_pagina_avaliar.dart';
 
 class PaginaAvaliar extends StatefulWidget {

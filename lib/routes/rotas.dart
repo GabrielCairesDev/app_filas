@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fura_fila/pages/pagina_carrinho/page/pagina_carrinho.dart';
+// import 'package:fura_fila/pages/pagina_carrinho/page/pagina_carrinho.dart';
 import 'package:fura_fila/pages/pagina_loja/page/pagina_loja.dart';
 import '../pages/pagina_avaliar/page/paginar_avaliar.dart';
 import '../pages/pagina_cadastrar/page/pagina_cadastrar.dart';
@@ -23,7 +23,7 @@ class Rotas {
       case "/pagina_loja":
         return MaterialPageRoute(builder: (context) => const PaginaLoja());
       case "/pagina_carrinho":
-        return MaterialPageRoute(builder: (context) => const PaginaCarrinho());
+      // return MaterialPageRoute(builder: (context) => const PaginaCarrinho());
       default:
         return MaterialPageRoute(builder: (context) => const PaginaInicial());
     }

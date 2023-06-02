@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'APP Filas',
       theme: ThemeApp.themeDart,
-      initialRoute: '/pagina_loja',
+      initialRoute: '/',
       onGenerateRoute: Rotas.generatoRoute,
     );
   }

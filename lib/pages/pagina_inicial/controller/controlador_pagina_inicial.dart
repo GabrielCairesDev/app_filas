@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class ControladorPaginaInicial extends ChangeNotifier {
   final emailControlador = TextEditingController();
   final senhaControlador = TextEditingController();
+  GlobalKey<FormState> globalKeySenha = GlobalKey();
+  GlobalKey<FormState> globalKeyEmail = GlobalKey();
 
   String? validadorEmail(String? email) {
     if (email!.isEmpty) {
@@ -16,5 +18,10 @@ class ControladorPaginaInicial extends ChangeNotifier {
       return 'Campo obrigatório*';
     }
     return null;
+  }
+
+  apagarControladores() {
+    emailControlador.clear();
+    senhaControlador.clear();
   }
 }
