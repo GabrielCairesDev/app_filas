@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class ListaProdutosNome extends StatelessWidget {
-  const ListaProdutosNome({super.key});
+  final String nome;
+  const ListaProdutosNome({super.key, required this.nome});
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       width: double.infinity,
       child: Text(
-        'Pão de queijo',
-        style: TextStyle(
+        nome,
+        style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),

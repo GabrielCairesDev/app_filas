@@ -7,18 +7,20 @@ import 'api/api_service.dart';
 import 'myapp.dart';
 
 void main() {
+  // LICENÇA PARA USAR A FONTE DO GOOGLE //
   LicenseRegistry.addLicense(
     () async* {
       final license = await rootBundle.loadString('google_fonts/OFL.txt');
       yield LicenseEntryWithLineBreaks(['google_fonts'], license);
     },
   );
-
+  // PARA CARREGAR A API //
+  Api().carregarApi();
+  // INICIAR O APLICATIVO //
   runApp(
     MultiProvider(
       providers: AppProviders.providers,
       child: const MyApp(),
     ),
   );
-  ApiService().fetchData();
 }
