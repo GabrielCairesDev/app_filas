@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../routes/rotas.dart';
+import '../../../../routes/rotas.dart';
 
 class PaginaAvaliarLinkParaVoltarParaLoja extends StatelessWidget {
   const PaginaAvaliarLinkParaVoltarParaLoja({super.key});

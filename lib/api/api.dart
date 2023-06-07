@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
+import '../model/lojas_model.dart';
 import '../model/produtos_model.dart';
 
 class Api {
@@ -13,30 +14,40 @@ class Api {
     const keyParseServerUrl = 'https://parseapi.back4app.com';
 
     await Parse().initialize(keyApplicationId, keyParseServerUrl, clientKey: keyClientKey, autoSendSessionId: true);
-
-    print('Api Carregada!');
   }
 
   // BUSCAR PRODUTOS NA API //
-  List<ProdutoModel> produtos = [];
-
-  Future<List<ProdutoModel>> receberProdutos() async {
+  List<ProdutoModel> produto = [];
+  Future<List<ProdutoModel>> receberListaProdutos() async {
     final queryBuilder = QueryBuilder(ParseObject('Produto'))..orderByAscending('nome');
+    final resposta = await queryBuilder.query();
+
+    if (resposta.success) {
+      produto = (resposta.results as List<ParseObject>).map(
+        (item) {
+          return ProdutoModel.parseObcjectFromJson(item);
+        },
+      ).toList();
+      return produto;
+    } else {
+      throw resposta.error!.message;
+    }
+  }
+
+  // BUSCAR LOJAS NA API //
+  List<LojaModel> loja = [];
+  Future<LojaModel?> receberLoja(String nome) async {
+    final queryBuilder = QueryBuilder(ParseObject('Loja'))..whereEqualTo('nome', nome);
 
     final resposta = await queryBuilder.query();
 
     if (resposta.success) {
-      produtos = (resposta.results as List<dynamic>).map(
-        (item) {
-          return ProdutoModel(
-            nome: item['nome'],
-            descricao: item['descricao'],
-            valor: item['valor'].toDouble(),
-            imagem: item['imagem'] != null ? item['imagem'].url : 'https://www.publicdomainpictures.net/pictures/260000/nahled/loading-symbol.jpg',
-          );
-        },
-      ).toList();
-      return produtos;
+      if (resposta.count > 0) {
+        final item = resposta.results?.first as ParseObject?;
+        return item != null ? LojaModel.parseObcjectFromJson(item) : null;
+      } else {
+        return null;
+      }
     } else {
       throw resposta.error!.message;
     }

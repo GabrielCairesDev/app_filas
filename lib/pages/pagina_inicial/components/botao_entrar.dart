@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../routes/rotas.dart';
 import '../controller/controlador_pagina_inicial.dart';
 
 class PaginaInicalBotaoEntrar extends StatelessWidget {
@@ -16,6 +17,7 @@ class PaginaInicalBotaoEntrar extends StatelessWidget {
                 controladorPaginaInicial.globalKeySenha.currentState!.validate()) {
               print('Liberado para fazer Login');
               controladorPaginaInicial.apagarControladores();
+              Navigator.of(context).pushNamed(Rotas.paginaLoja);
             }
           },
           style: TextButton.styleFrom(

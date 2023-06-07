@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 import '../../controller/controlador_pagina_loja.dart';
 
 class MeiaPaginaBotaoAdicionar extends StatelessWidget {
-  const MeiaPaginaBotaoAdicionar({super.key});
+  final double produtoValor;
+  const MeiaPaginaBotaoAdicionar({super.key, required this.produtoValor});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,8 @@ class MeiaPaginaBotaoAdicionar extends StatelessWidget {
           width: 150,
           child: TextButton(
             onPressed: () {
+              controladorPaginaLoja.atualizarQuantidadeTotal();
+              controladorPaginaLoja.atualizarValorTotal(produtoValor);
               controladorPaginaLoja.resetarQuantidade();
               Navigator.pop(context);
             },

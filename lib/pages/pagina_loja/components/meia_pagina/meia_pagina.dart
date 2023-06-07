@@ -33,13 +33,13 @@ class ListaProdutosMeiaPagina extends StatelessWidget {
                 MeiaPaginaDescricao(produtoDescricao: produtoDescricao),
                 // VALOR DO PRODUTO //
                 MeiaPaginaValor(produtoValor: produtoValor),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // BOTÃO ADICIONAR E REMOVER QUANTIDADE //
-                    MeiaPaginaBotaoAdd(),
+                    const MeiaPaginaBotaoAdd(),
                     // BOTÃO ADICIONAR AO CARRINHO //
-                    MeiaPaginaBotaoAdicionar()
+                    MeiaPaginaBotaoAdicionar(produtoValor: produtoValor)
                   ],
                 ),
               ],

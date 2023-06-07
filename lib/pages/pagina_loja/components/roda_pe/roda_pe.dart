@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fura_fila/pages/pagina_loja/components/roda_pe.dart/roda_pe_botao_carrinho.dart';
-import 'package:fura_fila/pages/pagina_loja/components/roda_pe.dart/roda_pe_fundo.dart';
-import 'package:fura_fila/pages/pagina_loja/components/roda_pe.dart/roda_pe_quantidade_valor_total.dart';
+import 'package:fura_fila/pages/pagina_loja/components/roda_pe/roda_pe_botao_carrinho.dart';
+import 'package:fura_fila/pages/pagina_loja/components/roda_pe/roda_pe_fundo.dart';
+import 'package:fura_fila/pages/pagina_loja/components/roda_pe/roda_pe_quantidade_valor_total.dart';
 
 class PaginaLojaRodaPe extends StatelessWidget {
   const PaginaLojaRodaPe({super.key});

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:fura_fila/pages/pagina_avaliar/components/avaliador_estrelas.dart';
+import 'package:fura_fila/pages/pagina_avaliar/controller/components/avaliador_estrelas.dart';
 import 'package:provider/provider.dart';
 
-import '../controller/controlador_pagina_avaliar.dart';
+import '../controlador_pagina_avaliar.dart';
 
-class PaginaAvaliarAvaliador03 extends StatelessWidget {
-  const PaginaAvaliarAvaliador03({super.key});
+class PaginaAvaliarAvaliador01 extends StatelessWidget {
+  const PaginaAvaliarAvaliador01({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class PaginaAvaliarAvaliador03 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Voltaria comprar no aplicativo?',
+              'O quão simples foi a sua compra?',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -25,10 +25,10 @@ class PaginaAvaliarAvaliador03 extends StatelessWidget {
               ),
             ),
             PaginaAvaliarEstrelas(
-              avaliacao: controladorPaginaAvaliar.estrela_03,
+              avaliacao: controladorPaginaAvaliar.estrela_01,
               avaliacaoMaxima: 5,
               atualizarAvaliacao: (novaAvaliacao) {
-                controladorPaginaAvaliar.atualizarAvaliacao03(novaAvaliacao);
+                controladorPaginaAvaliar.atualizarAvaliacao01(novaAvaliacao);
               },
             ),
           ],
