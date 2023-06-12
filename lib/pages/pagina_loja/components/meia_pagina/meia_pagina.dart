@@ -3,7 +3,9 @@ import 'package:fura_fila/pages/pagina_loja/components/meia_pagina/meia_pagina_b
 import 'package:fura_fila/pages/pagina_loja/components/meia_pagina/meia_pagina_imagem.dart';
 import 'package:fura_fila/pages/pagina_loja/components/meia_pagina/meia_pagina_descricao.dart';
 import 'package:fura_fila/pages/pagina_loja/components/meia_pagina/meia_pagina_nome.dart';
+import 'package:provider/provider.dart';
 
+import '../../controller/controlador_pagina_loja.dart';
 import 'meia_pagina_botao_add.dart';
 import 'meia_pagina_valor.dart';
 
@@ -15,6 +17,7 @@ class ListaProdutosMeiaPagina extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controladorPaginaLoja = Provider.of<ControladorPaginaLoja>(context);
     return SizedBox(
       height: 800,
       child: Padding(
@@ -39,7 +42,13 @@ class ListaProdutosMeiaPagina extends StatelessWidget {
                     // BOTÃO ADICIONAR E REMOVER QUANTIDADE //
                     const MeiaPaginaBotaoAdd(),
                     // BOTÃO ADICIONAR AO CARRINHO //
-                    MeiaPaginaBotaoAdicionar(produtoValor: produtoValor)
+                    MeiaPaginaBotaoAdicionar(
+                      produtoValor: produtoValor,
+                      produtoDescricao: produtoDescricao,
+                      produtoImagem: produtoImagem,
+                      produtoNome: produtoNome,
+                      produtoQuantidade: controladorPaginaLoja.quantidade.value,
+                    )
                   ],
                 ),
               ],

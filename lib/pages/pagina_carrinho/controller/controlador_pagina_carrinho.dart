@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../model/produtos_model.dart';
+import '../../../model/produtos_model_carrinho.dart';
 
 class ControladorPaginaCarrinho extends ChangeNotifier {
-  ValueNotifier<List<ProdutoModel>> produtosSelecionados = ValueNotifier<List<ProdutoModel>>([]);
+  ValueNotifier<List<ProdutoModelCarrinho>> produtosSelecionados = ValueNotifier<List<ProdutoModelCarrinho>>([]);
 
-  void adicionarProdutoSelecionado(ProdutoModel novoProduto) {
+  void adicionarProdutoSelecionado(ProdutoModelCarrinho novoProduto) {
     int produtoExistente = -1;
 
     for (int i = 0; i < produtosSelecionados.value.length; i++) {
@@ -20,6 +20,11 @@ class ControladorPaginaCarrinho extends ChangeNotifier {
       produtosSelecionados.value.add(novoProduto);
     }
 
+    notifyListeners();
+  }
+
+  void apagarCarrinho() {
+    produtosSelecionados.value.clear();
     notifyListeners();
   }
 }

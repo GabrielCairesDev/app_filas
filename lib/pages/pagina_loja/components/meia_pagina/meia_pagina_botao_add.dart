@@ -8,7 +8,7 @@ class MeiaPaginaBotaoAdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controladorPaginaLoja = context.watch<ControladorPaginaLoja>();
+    final controladorPaginaLoja = Provider.of<ControladorPaginaLoja>(context);
     return Stack(
       children: [
         Container(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../routes/rotas.dart';
+
 class PaginaAvaliarBotaoEnviarFeedback extends StatelessWidget {
   const PaginaAvaliarBotaoEnviarFeedback({super.key});
 
@@ -8,7 +10,9 @@ class PaginaAvaliarBotaoEnviarFeedback extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pop(Rotas.paginaLoja);
+        },
         style: TextButton.styleFrom(
             backgroundColor: const Color(0xFF335AF3),
             fixedSize: Size(MediaQuery.of(context).size.width, 58),

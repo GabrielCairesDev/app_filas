@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ControladorPaginaLoja with ChangeNotifier {
-  // int quantidade = 1;
-  //  quantidadeTotal = 0;
-  // double valorTotal = 0.0;
   ValueNotifier<double> valorTotal = ValueNotifier(0.0);
   ValueNotifier<int> quantidadeTotal = ValueNotifier(0);
   ValueNotifier<int> quantidade = ValueNotifier(1);
@@ -28,5 +25,10 @@ class ControladorPaginaLoja with ChangeNotifier {
 
   void atualizarQuantidadeTotal() {
     quantidadeTotal.value += quantidade.value;
+  }
+
+  void resetarQuantidadeTotal() {
+    valorTotal.value = 0.0;
+    quantidadeTotal.value = 0;
   }
 }
