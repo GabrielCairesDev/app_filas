@@ -33,6 +33,7 @@ migrate_working_dir/
 /build/
 api.dart
 app_filas/lib/api/api.dart
+.lib/api/api.dart
 .app_filas/lib/api/api.dart
 
 
