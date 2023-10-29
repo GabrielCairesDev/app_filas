@@ -33,6 +33,8 @@ migrate_working_dir/
 /build/
 api.dart
 app_filas/lib/api/api.dart
+.app_filas/lib/api/api.dart
+
 
 # Symbolication related
 app.*.symbols
